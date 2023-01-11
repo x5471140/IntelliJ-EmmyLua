@@ -56,7 +56,7 @@ class CreateTypeAnnotationIntention : BaseIntentionAction() {
             LuaCommentUtil.insertTemplate(localDef, editor) { _, template ->
                 template.addTextSegment("---@tttt ")
                 val name = MacroCallNode(SuggestTypeMacro())
-                template.addVariable("type", name, TextExpression("table"), true)
+                template.addVariable("tttt", name, TextExpression("table"), true)
                 template.addEndVariable()
             }
         }
