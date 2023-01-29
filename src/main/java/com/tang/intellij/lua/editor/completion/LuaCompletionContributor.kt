@@ -78,12 +78,14 @@ class LuaCompletionContributor : CompletionContributor() {
     }
 
     override fun fillCompletionVariants(parameters: CompletionParameters, result: CompletionResultSet) {
+
         val session = CompletionSession(parameters, result)
         parameters.editor.putUserData(CompletionSession.KEY, session)
         super.fillCompletionVariants(parameters, result)
         if (LuaSettings.instance.isShowWordsInFile && suggestWords && session.isSuggestWords && !result.isStopped) {
             suggestWordsInFile(parameters)
         }
+
     }
 
     override fun beforeCompletion(context: CompletionInitializationContext) {

@@ -54,9 +54,9 @@ class CreateTypeAnnotationIntention : BaseIntentionAction() {
         val localDef = LuaPsiTreeUtil.findElementOfClassAtOffset(psiFile, editor.caretModel.offset, LuaLocalDef::class.java, false)
         if (localDef != null) {
             LuaCommentUtil.insertTemplate(localDef, editor) { _, template ->
-                template.addTextSegment("---@tttt ")
+                template.addTextSegment("---@type ")
                 val name = MacroCallNode(SuggestTypeMacro())
-                template.addVariable("tttt", name, TextExpression("table"), true)
+                template.addVariable("type", name, TextExpression("table"), true)
                 template.addEndVariable()
             }
         }
